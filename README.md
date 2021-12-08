@@ -58,19 +58,3 @@ Content-Type: application/cloudevents-batch+json
 ]
 ```
 
-Polling
----
-
-Event Format
----
-
-Feed Types
----
-
-### Event Feed
-
-### Aggregate Feed
-
-
-
-
