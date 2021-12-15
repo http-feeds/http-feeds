@@ -58,3 +58,16 @@ Content-Type: application/cloudevents-batch+json
 ]
 ```
 
+Client calls again with the last processed event id.
+
+```
+GET https://example.http-feeds.org/feeds/customers?lastEventId=6860e2a6-19a2-4903-badd-ca470a94ac82
+Accept: application/json
+
+200 OK
+Content-Type: application/cloudevents-batch+json
+[]
+```
+
+If no event arrived since then, an empty array is returned.
+The client can continue polling in an infinite loop.
