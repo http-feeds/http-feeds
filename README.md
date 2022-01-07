@@ -16,14 +16,16 @@ HTTP feeds is a minimal specification for polling events over HTTP:
 Example
 ---
 
-```
-GET https://example.http-feeds.org/inventory
+```http
+GET /inventory HTTP/1.1
+Host: https://example.http-feeds.org
 Accept: application/json
 ```
 
-```
+```http
 200 OK
 Content-Type: application/cloudevents-batch+json
+
 [{
   "specversion" : "1.0",
   "type" : "org.http-feeds.example.inventory",
@@ -65,12 +67,16 @@ Content-Type: application/cloudevents-batch+json
 
 Client calls again with the last processed event id.
 
-```
-GET https://example.http-feeds.org/inventory?lastEventId=fa3e2a22-398c-4d02-ad08-9415e43178e6
+```http
+GET /inventory?lastEventId=fa3e2a22-398c-4d02-ad08-9415e43178e6 HTTP/1.1
+Host: https://example.http-feeds.org
 Accept: application/json
+```
 
+```http
 200 OK
 Content-Type: application/cloudevents-batch+json
+
 []
 ```
 
