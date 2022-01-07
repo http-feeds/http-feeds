@@ -81,7 +81,7 @@ Content-Type: application/cloudevents-batch+json
 []
 ```
 
-If no event arrived since then, an empty array is returned.
+An empty array signals the end of the feed.
 
 ## Polling
 
