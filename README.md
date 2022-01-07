@@ -1,7 +1,7 @@
 HTTP Feeds
 ===
 
-Asynchronously decouple systems with plain JSON HTTP APIs.
+Asynchronously decouple systems with plain JSON/HTTP APIs.
 
 HTTP feeds is a minimal specification for polling events over HTTP:
 
@@ -12,6 +12,7 @@ HTTP feeds is a minimal specification for polling events over HTTP:
 - Respects the `lastEventId` query parameter to scroll through further items
 - To support infinite polling for real-time feed subscriptions
 
+HTTP feeds can be used for event streaming and asynchronous data replication.
 
 Example
 ---
@@ -108,3 +109,20 @@ The client _must_ persist the `id` of the last processed event as lastEventId fo
 
 The client's event processing _must_ be idempotent (_at-least-once_ delivery semantic). 
 The `id` _may_ be used for idempotency checks.
+
+
+## Model
+
+The response contains an array of events that comply with the [CloudEvents Specification](https://github.com/cloudevents/spec).
+
+Field    | Type   | Mandatory | Description
+---      | ---    | ---       | ---
+`specversion`     | String | Mandatory | The currently supported CloudEvents specification version.
+`id`     | String | Mandatory | A unique value (such as a UUID) for this event. It can be used to implement deduplication/idempotency handling in downstream systems. It is used as the `lastEventId` in subsequent calls.
+`type`   | String | Mandatory | The type of the event. May be used to specify and deserialize the payload. A feed may contain different event types. It SHOULD be prefixed with a reverse-DNS name.
+`subject` | String | Optional | Key to identify the aggregate, the event refers to. It doesn't have to be unique within the feed. This should represent a business key such as an order number or sku.
+`method` | String | Optional | The HTTP equivalent method type that the feed item performs on the `subject`. `PUT` indicates that the _subject_ was created or updated. `DELETE` indicates that the  _subject_ was deleted. Defaults to `PUT`.
+`time` | String | Mandatory | The event addition timestamp. ISO 8601 UTC date and time format.
+`data`   | Object | Optional  | The payload of the item in JSON. May be missing, e.g. when the method was `DELETE`.
+
+Further metadata may be added, e.g. for traceability.
