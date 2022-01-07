@@ -19,7 +19,9 @@ Example
 ```
 GET https://example.http-feeds.org/inventory
 Accept: application/json
+```
 
+```
 200 OK
 Content-Type: application/cloudevents-batch+json
 [{
@@ -73,4 +75,30 @@ Content-Type: application/cloudevents-batch+json
 ```
 
 If no event arrived since then, an empty array is returned.
+
+## Polling
+
 The client can continue polling in an infinite loop.
+
+Pseudocode:
+
+```python
+endpoint = "https://example.http-feeds.org/inventory"
+lastEventId = null
+
+while true:
+  try:
+    response = GET endpoint + "?lastEventId=" + lastEventId 
+    for event in response:
+      process event
+      lastEventId = event.id
+    if response is empty:
+      wait N seconds 
+  except:
+    wait N seconds  
+```
+
+The client _must_ persist the `id` of the last processed event as lastEventId for further fetches.
+
+The client's event processing _must_ be idempotent (_at-least-once_ delivery semantic). 
+The `id` _may_ be used for idempotency checks.
