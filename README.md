@@ -25,7 +25,7 @@ Host: https://example.http-feeds.org
 ```
 
 ```http
-HTTP/2 200 OK
+HTTP/2 200
 Content-Type: application/cloudevents-batch+json
 
 [{
@@ -75,7 +75,7 @@ Host: https://example.http-feeds.org
 ```
 
 ```http
-HTTP/2 200 OK
+HTTP/2 200
 Content-Type: application/cloudevents-batch+json
 
 []
