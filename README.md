@@ -180,7 +180,7 @@ Example:
 There is an update for subject `9521234567899`.
 
 ```http
-200 OK
+HTTP/1.1 200 OK
 Content-Type: application/cloudevents-batch+json
 
 [{
@@ -225,7 +225,7 @@ Content-Type: application/cloudevents-batch+json
 After a compaction run, the first entry is gone:
 
 ```http
-200 OK
+HTTP/1.1 200 OK
 Content-Type: application/cloudevents-batch+json
 
 [{
@@ -264,7 +264,7 @@ Aggregate feeds use a `method` field to signal the deletion of an `subject` to c
 
 When aggregate was deleted, the server must append a `DELETE` entry with the `subject` to delete and no data content.
 
-```
+```json
 {
   "specversion" : "1.0",
   "type" : "org.http-feeds.example.inventory",
