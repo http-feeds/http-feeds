@@ -13,6 +13,7 @@ HTTP feeds is a minimal specification for polling events over HTTP:
 - to support [infinite polling](#polling) for real-time feed subscriptions.
 
 HTTP feeds can be used for [event streaming](#event-feeds) and [asynchronous data replication](#aggregate-feeds).
+No message broker, such as Kafka, required.
 
 
 Example
@@ -84,7 +85,7 @@ An empty array signals the end of the feed.
 
 ## Polling
 
-A client can continue polling in an infinite loop to subscribe to the feed.
+A client can continue polling in an infinite loop to subscribe to a feed.
 
 ### Simple Polling
 
