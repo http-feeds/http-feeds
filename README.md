@@ -293,7 +293,7 @@ Field    | Type   | Mandatory | Description
 Further metadata may be added, e.g. for traceability.
 
 
-### Authentication
+## Authentication
 
 HTTP feeds _may_ be protected with [HTTP authentication](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication). 
 
@@ -302,7 +302,7 @@ The most common authentication schemes are [Basic](https://tools.ietf.org/html/r
 The server _may_ filter feed items based on the principal.
 When filtering is applied, [caching](#caching) may be unfeasible.
 
-### Caching
+## Caching
 
 Servers _may_ set [appropriate](https://devcenter.heroku.com/articles/increasing-application-performance-with-http-cache-headers) response headers, such as `Cache-Control: public, max-age=31536000`, when a batch is full and will not be modified anymore.
 
