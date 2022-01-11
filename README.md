@@ -312,6 +312,11 @@ When filtering is applied, [caching](#caching) may be unfeasible.
 
 Servers _may_ set [appropriate](https://devcenter.heroku.com/articles/increasing-application-performance-with-http-cache-headers) response headers, such as `Cache-Control: public, max-age=31536000`, when a batch is full and will not be modified anymore.
 
+## Libraries and Examples
+
+* [http-feeds-server-spring-boot-starter](https://github.com/http-feeds/http-feeds-server-spring-boot-starter)
+* [http-feeds-server-spring-boot-example](https://github.com/http-feeds/http-feeds-server-spring-boot-example)
+
 ## About
 
 This site is maintained by [Jochen Christ](https://twitter.com/jochen_christ).
