@@ -284,17 +284,17 @@ The server _should_ start a [compaction run](#compaction) afterwards to delete p
 
 The response body contains an array of events that comply with the [CloudEvents Specification](https://github.com/cloudevents/spec) in the [`application/cloudevents-batch+json` format](https://github.com/cloudevents/spec/blob/v1.0.1/json-format.md#4-json-batch-format).
 
-Field    | Type   | Mandatory | Description
----      | ---    | ---       | ---
-`specversion`     | String | Mandatory | The currently supported CloudEvents specification version.
-`id`     | String | Mandatory | A unique value (such as a UUID) for this event. It can be used to implement deduplication/idempotency handling in downstream systems. It is used as the `lastEventId` in subsequent calls.
-`type`   | String | Mandatory | The type of the event. May be used to specify and deserialize the payload. A feed may contain different event types. It SHOULD be prefixed with a reverse-DNS name.
-`source` | String | Mandatory | The source system that created the event. Should be a URI of the system.
-`time` | String | Mandatory | The event addition timestamp. ISO 8601 UTC date and time format.
-`subject` | String | Optional | Key to identify the business object. It doesn't have to be unique within the feed. This should represent a business key such as an order number or sku. Used for `compaction` and `deletion`, if implemented.
-`method` | String | Optional | The HTTP equivalent method type that the feed item performs on the `subject`. `PUT` indicates that the _subject_ was created or updated. `DELETE` indicates that the  _subject_ was deleted. Defaults to `PUT`.
-`datacontenttype` | String | Optional | Defaults to `application/json`.
-`data`   | Object | Optional  | The payload of the item. Defaults to JSON. May be missing, e.g. when the method was `DELETE`.
+Field    | Type            | Event Feed | Aggregate Feed | Description
+---      | ---             | ---        | ---        | ---
+`specversion`     | String | Mandatory  | Mandatory | The currently supported CloudEvents specification version.
+`id`     | String | Mandatory | Mandatory | A unique value (such as a UUID) for this event. It can be used to implement deduplication/idempotency handling in downstream systems. It is used as the `lastEventId` in subsequent calls.
+`type`   | String | Mandatory | Mandatory | The type of the event. May be used to specify and deserialize the payload. A feed may contain different event types. It SHOULD be prefixed with a reverse-DNS name.
+`source` | String | Mandatory | Mandatory | The source system that created the event. Should be a URI of the system.
+`time` | String | Mandatory | Mandatory | The event addition timestamp. ISO 8601 UTC date and time format.
+`subject` | String | n/a    | Mandatory | Key to identify the business object. It doesn't have to be unique within the feed. This should represent a business key such as an order number or sku. Used for [compaction](#compaction) and [deletion](#deletion), if implemented.
+`method` | String | n/a | Optional | The HTTP equivalent method type that the feed item performs on the `subject`. `PUT` indicates that the _subject_ was created or updated. `DELETE` indicates that the  _subject_ was deleted. Defaults to `PUT`.
+`datacontenttype` | String | Optional | Optional | Defaults to `application/json`.
+`data`   | Object | Mandatory | Optional |  The payload of the item. Defaults to JSON. May be missing, e.g. when the method was `DELETE`.
 
 Further metadata may be added, e.g. for traceability.
 
