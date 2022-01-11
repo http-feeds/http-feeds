@@ -149,7 +149,7 @@ This may become an issue with more than [10K connections](http://www.kegel.com/c
 
 ## Aggregate Feeds
 
-HTTP feeds can be used to provide an API for data collections of mutable objects (aka aggregates, master data) with other systems. 
+HTTP feeds can be used to provide an API for data collections of mutable objects (aka aggregates, master data) with other systems.
 
 An aggregate is identified through its `subject`. 
 An aggregate feed _must_ contain every aggregate at least once.
@@ -166,8 +166,8 @@ Each aggregate update leads to an additional entry in the feed.
 It is good practice to keep the feed small to enable a quick synchronization of new clients.
 When feed items include the full current state of the resource, older feed items for the same aggregate may be outdated.
 
-Consumers that read the feed from the beginning will therefore have an inconsistent state for a short time.
-To mitigate, entries may be deleted from the feed when another entry was appended to the feed with the same `subject`.
+Clients that read the feed from the beginning will therefore occur an inconsistent state for a short time.
+To mitigate, entries _may_ be deleted from the feed when another entry was appended to the feed with the same `subject`.
 
 Example:
 There is an update for subject `9521234567899`.
