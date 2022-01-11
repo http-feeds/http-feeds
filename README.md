@@ -313,3 +313,13 @@ When filtering is applied, [caching](#caching) may be unfeasible.
 
 Servers _may_ set [appropriate](https://devcenter.heroku.com/articles/increasing-application-performance-with-http-cache-headers) response headers, such as `Cache-Control: public, max-age=31536000`, when a batch is full and will not be modified anymore.
 
+## About
+
+This site is maintained by [Jochen Christ](https://twitter.com/jochen_christ).
+
+Contributions are highly appreciated, e. g. additional libraries or examples.
+
+Found an error or something is missing? 
+Please [raise an issue](https://github.com/http-feeds/http-feeds/issues/new) or [create a pull request](https://github.com/http-feeds/http-feeds/pulls).
+
+This specification is published under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
