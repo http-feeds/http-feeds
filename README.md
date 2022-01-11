@@ -85,11 +85,11 @@ An empty array signals the end of the feed.
 
 ## Polling
 
-The client can continue polling in an infinite loop to subscribe to the feed.
+A client can continue polling in an infinite loop to subscribe to the feed.
 
 ### Simple Polling
 
-The client calls the endpoint with the last known `id` in an loop.
+A client calls the endpoint with the last known `id` in an loop.
 If the response is an empty array, the client reached the end of the stream and waits some time to make another call to get events that happened in the meantime.
 
 Pseudocode:
