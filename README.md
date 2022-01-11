@@ -153,7 +153,7 @@ HTTP feeds can be used to provide an API for data collections of mutable objects
 
 An aggregate is identified through its `subject`. 
 An aggregate feed _must_ contain every aggregate at least once.
-Every aggregate update leads to an appended feed entry with the full current state or an URL to fetch the current state.
+Every created aggregate and each update leads to an appended feed entry with the full current state.
 
 Feed consumers can subscribe an _aggregate feed_ to perform near real-time data synchronization to build local read models and to trigger actions when new or updated data is received.
 A feed consumer has an consistent state when reaching the end of the feed.
@@ -276,7 +276,7 @@ The server _should_ start a [compaction run](#Compaction) afterwards to delete p
 
 ## Data Model
 
-The response contains an array of events that comply with the [CloudEvents Specification](https://github.com/cloudevents/spec) in the [`application/cloudevents-batch+json` format](https://github.com/cloudevents/spec/blob/v1.0.1/json-format.md#4-json-batch-format).
+The response body contains an array of events that comply with the [CloudEvents Specification](https://github.com/cloudevents/spec) in the [`application/cloudevents-batch+json` format](https://github.com/cloudevents/spec/blob/v1.0.1/json-format.md#4-json-batch-format).
 
 Field    | Type   | Mandatory | Description
 ---      | ---    | ---       | ---
@@ -287,6 +287,22 @@ Field    | Type   | Mandatory | Description
 `time` | String | Mandatory | The event addition timestamp. ISO 8601 UTC date and time format.
 `subject` | String | Optional | Key to identify the business object. It doesn't have to be unique within the feed. This should represent a business key such as an order number or sku. Used for `compaction` and `deletion`, if implemented.
 `method` | String | Optional | The HTTP equivalent method type that the feed item performs on the `subject`. `PUT` indicates that the _subject_ was created or updated. `DELETE` indicates that the  _subject_ was deleted. Defaults to `PUT`.
-`data`   | Object | Optional  | The payload of the item in JSON. May be missing, e.g. when the method was `DELETE`.
+`datacontenttype` | String | Optional | Defaults to `application/json`.
+`data`   | Object | Optional  | The payload of the item. Defaults to JSON. May be missing, e.g. when the method was `DELETE`.
 
 Further metadata may be added, e.g. for traceability.
+
+
+### Authentication
+
+HTTP feeds _may_ be protected with [HTTP authentication](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication). 
+
+The most common authentication schemes are [Basic](https://tools.ietf.org/html/rfc7617) and [Bearer](https://tools.ietf.org/html/rfc6750).
+
+The server _may_ filter feed items based on the principal.
+When filtering is applied, [caching](#caching) may be unfeasible.
+
+### Caching
+
+Servers _may_ set [appropriate](https://devcenter.heroku.com/articles/increasing-application-performance-with-http-cache-headers) response headers, such as `Cache-Control: public, max-age=31536000`, when a batch is full and will not be modified anymore.
+
