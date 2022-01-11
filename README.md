@@ -12,8 +12,8 @@ HTTP feeds is a minimal specification for polling events over HTTP:
 - and respects the `lastEventId` query parameter to scroll through further items
 - to support [infinite polling](#polling) for real-time feed subscriptions.
 
-HTTP feeds can be used for [event streaming](#event-feeds) and [asynchronous data replication](#aggregate-feeds).
-No message broker, such as Kafka, required.
+HTTP feeds can be used for [event streaming](#event-feeds) and [asynchronous data replication](#aggregate-feeds).  
+No message broker, such as Kafka or RabbitMQ, required.
 
 
 Example
