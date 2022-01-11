@@ -24,7 +24,7 @@ Accept: application/json
 ```
 
 ```http
-200 OK
+HTTP/1.1 200 OK
 Content-Type: application/cloudevents-batch+json
 
 [{
@@ -75,7 +75,7 @@ Accept: application/json
 ```
 
 ```http
-200 OK
+HTTP/1.1 200 OK
 Content-Type: application/cloudevents-batch+json
 
 []
