@@ -21,7 +21,6 @@ Example
 ```http
 GET /inventory HTTP/1.1
 Host: https://example.http-feeds.org
-Accept: application/json
 ```
 
 ```http
@@ -72,7 +71,6 @@ Client calls again with the last processed event id.
 ```http
 GET /inventory?lastEventId=fa3e2a22-398c-4d02-ad08-9415e43178e6 HTTP/1.1
 Host: https://example.http-feeds.org
-Accept: application/json
 ```
 
 ```http
