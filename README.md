@@ -110,7 +110,7 @@ while true:
     wait N seconds  
 ```
 
-The client _must_ persist the `id` of the last processed event as `lastEventId` for further fetches.
+Client _must_ persist the `id` of the last processed event as `lastEventId` for further fetches.
 
 The client's event processing _must_ be idempotent (_at-least-once_ delivery semantic). 
 The `id` _may_ be used for idempotency checks.
