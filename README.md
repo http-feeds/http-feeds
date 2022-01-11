@@ -250,10 +250,11 @@ Content-Type: application/cloudevents-batch+json
 
 ### Deletion
 
-Some aggregates can be deleted, e. g. by regulatory requirements.
-HTTP feeds use a `method` field to signal the deletion of an `subject` to consumers that built a local read model before.
+Some aggregates need to  be deleted, e. g. by regulatory requirements.
 
-When aggregate was deleted, the server must append a DELETE entry with the `subject` to delete and no data content.
+Aggregate feeds use a `method` field to signal the deletion of an `subject` to consumers that built a local read model before.
+
+When aggregate was deleted, the server must append a `DELETE` entry with the `subject` to delete and no data content.
 
 ```
 {
