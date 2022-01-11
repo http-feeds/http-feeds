@@ -118,12 +118,9 @@ The `id` _may_ be used for idempotency checks.
 ### Long Polling
 
 The server may also support _long polling_ for lower latency.
+The client adds a `timeout` query parameter to specify the max period of milliseconds to wait for an response.
 
-If there are no newer events, the server keeps the connection open until new events arrive or a defined time period timed out.
-The server then sends the response (the new events or an empty array) and the client can immediatelly perform another call.
-The server can recognize new events more efficiently by implementing an event notification and/or performing a high-frequency polling to the database.
-
-Pseudocode:
+Client Pseudocode:
 
 ```python
 endpoint = "https://example.http-feeds.org/inventory"
@@ -142,10 +139,12 @@ while true:
     wait N seconds
 ```
 
+If there are no newer events available, the server keeps the connection open until new events arrive or the defined period timed out.
+The server then sends the response (with the new events or an empty array) and the client can immediatelly perform another call.
+The server can recognize new events more efficiently by implementing an event notification and/or performing a high-frequency polling to the database.
+
 The cost of long polling is that the server needs to handle more connections concurrently.
 This may become an issue with more than [10K connections](http://www.kegel.com/c10k.html).
-
-
 
 
 ## Model
