@@ -276,7 +276,7 @@ The server _should_ start a [compaction run](#Compaction) afterwards to delete p
 
 ## Data Model
 
-The response contains an array of events that comply with the [CloudEvents Specification](https://github.com/cloudevents/spec) and its [`application/cloudevents-batch+json` media type](https://github.com/cloudevents/spec/blob/v1.0.1/json-format.md#4-json-batch-format).
+The response contains an array of events that comply with the [CloudEvents Specification](https://github.com/cloudevents/spec) in the [`application/cloudevents-batch+json` format](https://github.com/cloudevents/spec/blob/v1.0.1/json-format.md#4-json-batch-format).
 
 Field    | Type   | Mandatory | Description
 ---      | ---    | ---       | ---
