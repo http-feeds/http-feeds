@@ -19,12 +19,12 @@ Example
 ---
 
 ```http
-GET /inventory HTTP/1.1
+GET /inventory HTTP/2
 Host: https://example.http-feeds.org
 ```
 
 ```http
-HTTP/1.1 200 OK
+HTTP/2 200 OK
 Content-Type: application/cloudevents-batch+json
 
 [{
@@ -69,12 +69,12 @@ Content-Type: application/cloudevents-batch+json
 Client calls again with the last processed event id.
 
 ```http
-GET /inventory?lastEventId=fa3e2a22-398c-4d02-ad08-9415e43178e6 HTTP/1.1
+GET /inventory?lastEventId=fa3e2a22-398c-4d02-ad08-9415e43178e6 HTTP/2
 Host: https://example.http-feeds.org
 ```
 
 ```http
-HTTP/1.1 200 OK
+HTTP/2 200 OK
 Content-Type: application/cloudevents-batch+json
 
 []
