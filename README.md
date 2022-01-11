@@ -151,11 +151,12 @@ This may become an issue with more than [10K connections](http://www.kegel.com/c
 
 HTTP feeds can be used to provide an API for data collections of mutable objects (aka aggregates, master data) with other systems. 
 
-Feed consumers can subscribe an _aggregate feed_ to perform near real-time data synchronization to build local read models and to trigger actions when new or updated data is received.
-
+An aggregate is identified through its `subject`. 
+An aggregate feed _must_ contain every aggregate at least once.
 Every aggregate update leads to an appended feed entry with the full current state or an URL to fetch the current state.
-An _aggregate feed_ must contain every aggregate (identified through its `subject`) at least once.
-A feed consumer has an eventual consistent state when reaching the end of the feed.
+
+Feed consumers can subscribe an _aggregate feed_ to perform near real-time data synchronization to build local read models and to trigger actions when new or updated data is received.
+A feed consumer has an consistent state when reaching the end of the feed.
 
 The server should implement [Compaction](#Compaction) an may implement [Deletion](#Deletion) based on business requirements.
 
@@ -273,9 +274,9 @@ The server _should_ start a [compaction run](#Compaction) afterwards to delete p
 
 ```
 
-## Model
+## Data Model
 
-The response contains an array of events that comply with the [CloudEvents Specification](https://github.com/cloudevents/spec).
+The response contains an array of events that comply with the [CloudEvents Specification](https://github.com/cloudevents/spec) and its [`application/cloudevents-batch+json` media type](https://github.com/cloudevents/spec/blob/v1.0.1/json-format.md#4-json-batch-format).
 
 Field    | Type   | Mandatory | Description
 ---      | ---    | ---       | ---
