@@ -10,9 +10,9 @@ HTTP feeds is a minimal specification for polling events over HTTP:
 - Serialized in [CloudEvents](https://github.com/cloudevents/spec) event format
 - In batched responses using the media type `application/cloudevents-batch+json`
 - Respects the `lastEventId` query parameter to scroll through further items
-- To support infinite polling for real-time feed subscriptions
+- To support [infinite polling](#polling) for real-time feed subscriptions
 
-HTTP feeds can be used for [event streaming](#polling) and [asynchronous data replication](#aggregate-feeds).
+HTTP feeds can be used for [event streaming](#event-feeds) and [asynchronous data replication](#aggregate-feeds).
 
 Example
 ---
@@ -141,15 +141,22 @@ while true:
 
 If there are no newer events available, the server keeps the connection open until new events arrive or the defined period timed out.
 The server then sends the response (with the new events or an empty array) and the client can immediatelly perform another call.
-The server can recognize new events more efficiently by implementing an event notification and/or performing a high-frequency polling to the database.
 
-The cost of long polling is that the server needs to handle more connections concurrently.
+The latency can be improved, as the server can react to new events efficiently by implementing an internal event notification, change data capture triggers, or performing a high-frequency polling to the database.
+
+The cost of long polling is that the server needs to handle more open connections concurrently.
 This may become an issue with more than [10K connections](http://www.kegel.com/c10k.html).
 
 
+## Event Feeds
+
+HTTP feeds can be used to provide an API for publishing immutable domain events to other systems.
+
+It is quite common that one http feed endpoint includes different event `type`s that belong to the same bounded context.
+
 ## Aggregate Feeds
 
-HTTP feeds can be used to provide an API for data collections of mutable objects (aka aggregates, master data) with other systems.
+HTTP feeds can be used to provide an API for data collections of mutable objects (aka aggregates, master data) to other systems.
 
 An aggregate is identified through its `subject`. 
 An aggregate feed _must_ contain every aggregate at least once.
