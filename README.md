@@ -1,7 +1,7 @@
 HTTP Feeds
 ===
 
-Asynchronously decouple systems with plain JSON/HTTP APIs.
+Asynchronously decouple systems with plain HTTP APIs.
 
 HTTP feeds is a minimal specification for polling events over HTTP:
 
