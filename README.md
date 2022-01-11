@@ -260,7 +260,7 @@ Content-Type: application/cloudevents-batch+json
 
 Some aggregates need to  be deleted, e. g. by regulatory requirements.
 
-Aggregate feeds use a `method` field to signal the deletion of an `subject` to consumers that built a local read model before.
+Aggregate feeds use a `method` field with value `DELETE` to signal the deletion of an `subject` to consumers that built a local read model before.
 
 When aggregate was deleted, the server must append a `DELETE` entry with the `subject` to delete and no data content.
 
@@ -278,7 +278,7 @@ When aggregate was deleted, the server must append a `DELETE` entry with the `su
 
 Clients _must_ delete this aggregate or otherwise handle the removal.
 
-The server _should_ start a [compaction run](#Compaction) afterwards to delete previous entries for the same aggregate.
+The server _should_ start a [compaction run](#compaction) afterwards to delete previous entries for the same aggregate.
 
 ## Data Model
 
