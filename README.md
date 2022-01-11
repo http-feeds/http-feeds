@@ -6,13 +6,14 @@ Asynchronously decouple systems with plain HTTP APIs.
 HTTP feeds is a minimal specification for polling events over HTTP:
 
 - An HTTP feed provides a HTTP GET endpoint
-- Returns a chronological sequence (!) of events
-- Serialized in [CloudEvents](https://github.com/cloudevents/spec) event format
-- In batched responses using the media type `application/cloudevents-batch+json`
-- Respects the `lastEventId` query parameter to scroll through further items
-- To support [infinite polling](#polling) for real-time feed subscriptions
+- that returns a chronological sequence (!) of events
+- serialized in [CloudEvents](https://github.com/cloudevents/spec) event format
+- in batched responses using the media type `application/cloudevents-batch+json`
+- and respects the `lastEventId` query parameter to scroll through further items
+- to support [infinite polling](#polling) for real-time feed subscriptions.
 
 HTTP feeds can be used for [event streaming](#event-feeds) and [asynchronous data replication](#aggregate-feeds).
+
 
 Example
 ---
