@@ -6,7 +6,7 @@ Asynchronously decouple systems with plain JSON/HTTP APIs.
 HTTP feeds is a minimal specification for polling events over HTTP:
 
 - An HTTP feed provides a HTTP GET endpoint
-- Returns a chronological sequence of events or aggregate updates
+- Returns a chronological sequence (!) of events
 - Serialized in [CloudEvents](https://github.com/cloudevents/spec) event format `application/cloudevents-batch+json`
 - As batched results 
 - Respects the `lastEventId` query parameter to scroll through further items
@@ -85,7 +85,12 @@ An empty array signals the end of the feed.
 
 ## Polling
 
-The client can continue polling in an infinite loop.
+The client can continue polling in an infinite loop to subscribe to the feed.
+
+### Simple Polling
+
+The client calls the endpoint with the last known `id` in an loop.
+If the response is an empty array, the client reached the end of the stream and waits some time to make another call to get events that happened in the meantime.
 
 Pseudocode:
 
@@ -109,6 +114,38 @@ The client _must_ persist the `id` of the last processed event as `lastEventId` 
 
 The client's event processing _must_ be idempotent (_at-least-once_ delivery semantic). 
 The `id` _may_ be used for idempotency checks.
+
+### Long Polling
+
+The server may also support _long polling_ for lower latency.
+
+If there are no newer events, the server keeps the connection open until new events arrive or a defined time period timed out.
+The server then sends the response (the new events or an empty array) and the client can immediatelly perform another call.
+The server can recognize new events more efficiently by implementing an event notification and/or performing a high-frequency polling to the database.
+
+Pseudocode:
+
+```python
+endpoint = "https://example.http-feeds.org/inventory"
+lastEventId = null
+timeout = 5000 // 5000 milliseconds is a good timeout period for long polling
+
+while true:
+  try:
+    response = GET endpoint + "?lastEventId=" + lastEventId + "&timeout=" + timeout
+    for event in response:
+      process event
+      lastEventId = event.id
+    // no client wait step within the loop
+  except:
+    // protect the server from an in case of an server error
+    wait N seconds
+```
+
+The cost of long polling is that the server needs to handle more connections concurrently.
+This may become an issue with more than [10K connections](http://www.kegel.com/c10k.html).
+
+
 
 
 ## Model
