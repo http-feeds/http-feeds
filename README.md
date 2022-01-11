@@ -274,12 +274,11 @@ When aggregate was deleted, the server must append a `DELETE` entry with the `su
   "subject" : "9521234567899",
   "method": "DELETE"
 }
+```
 
 Clients _must_ delete this aggregate or otherwise handle the removal.
 
 The server _should_ start a [compaction run](#Compaction) afterwards to delete previous entries for the same aggregate.
-
-```
 
 ## Data Model
 
