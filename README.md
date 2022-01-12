@@ -147,6 +147,19 @@ The latency can be improved, as the server can react to new events efficiently b
 The cost of long polling is that the server needs to handle more open connections concurrently.
 This may become an issue with more than [10K connections](http://www.kegel.com/c10k.html).
 
+## Event ID
+
+The `event.id` is used as `lastEventId` to scroll through further events.
+This means that events need to be strongly ordered to retrieve subsequent events.
+
+Events may also get deleted from the feed, e.g. through [Compaction](#compaction) and [Deletion](#deletion).
+The server must still respect the original position and send only newer events, even when an event with the `lastEventId` was deleted.
+
+One way to achieve this is to use an time-ordered [UUIDv6](https://uuid.ramsey.dev/en/stable/nonstandard/version6.html) as event ID (see [IETF draft](https://datatracker.ietf.org/doc/html/draft-peabody-dispatch-new-uuid-format#section-4.3) and [Java-Library](https://github.com/f4b6a3/uuid-creator/wiki/1.6.-Time-ordered)). 
+This a viable option, especially if only one server appends new events to the feed, but might be a problem with multiple servers when the clocks are not in-sync.
+
+An alternative is to use a database [sequence](https://www.postgresql.org/docs/current/functions-sequence.html) that is used as part of the `event.id` and interpreted when querying the database for the next batch. Example: The event.id `0000001000001::5f8de8ff-30d8-4fab-8f5a-c32f326d6f26` contains a database sequence `0000001000001` and a random UUID.
+
 
 ## Event Feeds
 
