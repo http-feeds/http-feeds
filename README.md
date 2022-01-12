@@ -1,7 +1,7 @@
 HTTP Feeds
 ===
 
-Asynchronously decouple systems with plain HTTP APIs.
+Asynchronously [event streaming](#event-feeds) and [asynchronous data replication](#aggregate-feeds) with plain HTTP APIs.
 
 HTTP feeds is a minimal specification for polling events over HTTP:
 
@@ -12,9 +12,7 @@ HTTP feeds is a minimal specification for polling events over HTTP:
 - and respects the `lastEventId` query parameter to scroll through further items
 - to support [infinite polling](#polling) for real-time feed subscriptions.
 
-HTTP feeds can be used for [event streaming](#event-feeds) and [asynchronous data replication](#aggregate-feeds).  
-No message broker, such as Kafka or RabbitMQ, required.
-
+HTTP feeds can be used to [decouple systems](https://scs-architecture.org) asynchronously [without message brokers](https://www.innoq.com/en/articles/2021/12/http-feeds-schnittstellen-ohne-kafka-oder-rabbitmq), such as Kafka or RabbitMQ.
 
 Example
 ---
