@@ -338,9 +338,9 @@ Servers _may_ set [appropriate](https://devcenter.heroku.com/articles/increasing
 
 ## About
 
-This site is maintained by [Jochen Christ](https://twitter.com/jochen_christ).
-HTTP feeds has evolved from [rest-feeds](https://github.com/rest-feeds/rest-feeds).
-Contributions are highly appreciated, e.g. libraries or examples in different frameworks help a lot.
+This site is maintained by [Jochen Christ](https://twitter.com/jochen_christ).  
+HTTP feeds has evolved from [rest-feeds](https://github.com/rest-feeds/rest-feeds).  
+Contributions are highly appreciated, e.g. libraries or examples in different languages or frameworks help a lot.
 
 Found an error or something is missing? 
 Please [raise an issue](https://github.com/http-feeds/http-feeds/issues/new) or [create a pull request](https://github.com/http-feeds/http-feeds/pulls).
