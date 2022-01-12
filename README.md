@@ -300,7 +300,7 @@ An HTTP feed endpoint must support these query parameters:
 Query Parameter | Type        | Mandatory | Description
 ---             | ---         | ---       | ---        
 `lastEventId`   | String      | Optional  | The last event `id` that was processed. Used to scroll through further events. May be missing or `null` to start from the beginning of the feed.
-`timeout`       | Number      | Optional  | Set this, when long-polling should be used and is supported by the server. Max waiting time in milliseconds for long-polling, after which the server must send a response. A typical value is `5000`.
+`timeout`       | Number      | Optional  | A timeout is set, when long-polling should be used and is supported by the server. Max waiting time in milliseconds for long-polling, after which the server must send a response. A typical value is `5000`.
 
 
 The response body contains an array of events that comply with the [CloudEvents Specification](https://github.com/cloudevents/spec) in the [`application/cloudevents-batch+json` format](https://github.com/cloudevents/spec/blob/v1.0.1/json-format.md#4-json-batch-format).
