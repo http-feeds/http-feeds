@@ -1,7 +1,7 @@
 HTTP Feeds
 ===
 
-Asynchronously [event streaming](#event-feeds) and [asynchronous data replication](#aggregate-feeds) with plain HTTP APIs.
+Asynchronous [event streaming](#event-feeds) and [data replication](#aggregate-feeds) with plain HTTP APIs.
 
 HTTP feeds is a minimal specification for polling events over HTTP:
 
