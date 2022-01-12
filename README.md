@@ -133,12 +133,12 @@ while true:
       lastEventId = event.id
     // no client wait step within the loop
   except:
-    // protect the server from an in case of an server error
+    // Delay the next request only in case of a server error
     wait N seconds
 ```
 
 If there are no newer events available, the server keeps the connection open until new events arrive or the defined period timed out.
-The server then sends the response (with the new events or an empty array) and the client can immediatelly perform another call.
+The server then sends the response (with the new events or an empty array) and the client can immediately perform another call.
 
 The latency can be improved, as the server can react to new events efficiently by implementing an internal event notification, change data capture triggers, or performing a high-frequency polling to the database.
 
