@@ -12,7 +12,7 @@ HTTP feeds is a minimal specification for polling events over HTTP:
 - and respects the `lastEventId` query parameter to scroll through further items
 - to support [infinite polling](#polling) for real-time feed subscriptions.
 
-HTTP feeds can be used to [decouple systems](https://scs-architecture.org) asynchronously [without message brokers](https://www.innoq.com/en/articles/2021/12/http-feeds-schnittstellen-ohne-kafka-oder-rabbitmq), such as Kafka or RabbitMQ, or push-based webhook integrations.
+HTTP feeds can be used to [decouple systems](https://scs-architecture.org) asynchronously [without message brokers](https://www.innoq.com/en/articles/2021/12/http-feeds-schnittstellen-ohne-kafka-oder-rabbitmq), such as Kafka or RabbitMQ.
 
 Example
 ---
