@@ -50,7 +50,7 @@ Content-Type: application/cloudevents-batch+json
     "updated": "2022-01-01T00:00:12Z",
     "quantity": 0
   }
-}{
+},{
   "specversion" : "1.0",
   "type" : "org.http-feeds.example.inventory",
   "source" : "https://example.http-feeds.org/inventory",
@@ -218,7 +218,7 @@ Content-Type: application/cloudevents-batch+json
     "updated": "2022-01-01T00:00:12Z",
     "quantity": 0
   }
-}{
+},{
   "specversion" : "1.0",
   "type" : "org.http-feeds.example.inventory",
   "source" : "https://example.http-feeds.org/inventory",
@@ -251,7 +251,7 @@ Content-Type: application/cloudevents-batch+json
     "updated": "2022-01-01T00:00:12Z",
     "quantity": 0
   }
-}{
+},{
   "specversion" : "1.0",
   "type" : "org.http-feeds.example.inventory",
   "source" : "https://example.http-feeds.org/inventory",
