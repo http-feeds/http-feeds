@@ -335,6 +335,7 @@ Servers _may_ set [appropriate](https://devcenter.heroku.com/articles/increasing
 
 * [http-feeds-server-spring-boot-starter](https://github.com/http-feeds/http-feeds-server-spring-boot-starter)
 * [http-feeds-server-spring-boot-example](https://github.com/http-feeds/http-feeds-server-spring-boot-example)
+* [http-feeds-server-aws-serverless-example](https://github.com/http-feeds/http-feeds-server-aws-serverless-example)
 
 ## About
 
