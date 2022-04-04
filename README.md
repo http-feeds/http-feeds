@@ -339,8 +339,10 @@ Servers _may_ set [appropriate](https://devcenter.heroku.com/articles/increasing
 
 ## About
 
-This site is maintained by [Jochen Christ](https://twitter.com/jochen_christ).  
+This site is maintained by [Jochen Christ](https://twitter.com/jochen_christ). Jochen works as tech lead at [INNOQ](https://www.innoq.com) and is also author of [WhichJDK.com](https://whichjdk.com), [Remote Mob Programming](https://www.remotemobprogramming.org), and [Data Mesh Architecture](https://www.datamesh-architecture.com).
+
 HTTP feeds has evolved from [rest-feeds](https://github.com/rest-feeds/rest-feeds).  
+
 Contributions are highly appreciated, e.g. libraries or examples in different languages or frameworks help a lot.
 
 Found an error or something is missing? 
