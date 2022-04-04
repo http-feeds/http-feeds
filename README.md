@@ -176,7 +176,7 @@ Every created aggregate and each update leads to an appended feed entry with the
 Feed consumers can subscribe an _aggregate feed_ to perform near real-time data synchronization to build local read models and to trigger actions when new or updated data is received.
 A feed consumer has a consistent state when reaching the end of the feed.
 
-The server should implement [Compaction](#compaction) an may implement [Deletion](#deletion) based on business requirements.
+The server should implement [Compaction](#compaction) and may implement [Deletion](#deletion) based on business requirements.
 
 ### Compaction
 
